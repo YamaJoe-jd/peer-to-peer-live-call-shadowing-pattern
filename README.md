@@ -136,3 +136,23 @@ flowchart LR
     API_LOCAL -. mirrors .-> FLY_API
 ```
 
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+
+    Idle --> Locked : File opened\n(write or read)
+    Locked --> Locked : Additional readers/writers\nattempt access
+
+    Locked --> Queued : Write intent received\n(file still locked)
+    Queued --> Queued : More write intents\nadded to queue
+
+    Locked --> ReadyToFlush : File becomes free\n(no active handles)
+
+    ReadyToFlush --> Flushing : Safe flush triggered
+    Flushing --> Idle : Atomic write completed\nqueue cleared
+
+    Flushing --> Error : Write failed
+    Error --> Idle : Recovery / retry logic
+```
+
