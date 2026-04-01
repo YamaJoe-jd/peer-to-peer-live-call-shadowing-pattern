@@ -1,6 +1,22 @@
+<p align="center">
+  <img src="https://via.placeholder.com/120" width="120" alt="Network File Guard Logo"/>
+</p>
+
+<h1 align="center">Network File Guard</h1>
+
+<p align="center">
+  Concurrency‑safe monitoring and write orchestration for SMB network shares.
+</p>
+
 # Network File Guard
 
+
 Network File Guard is a full‑stack monitoring and management agent designed to protect files on SMB network shares from concurrent write conflicts. When multiple users or processes attempt to update the same file, Network File Guard intelligently queues write operations and flushes them in a single, safe burst once the file becomes free — preventing data corruption, lock collisions, and partial writes.
+
+## 📸 Dashboard Preview
+
+> *UI preview coming soon — live monitoring, queued writes, and system health at a glance.*
+
 
 ## ✨ Key Features
 - **Concurrency‑safe write orchestration** for SMB network shares  
@@ -34,3 +50,22 @@ Network File Guard is a full‑stack monitoring and management agent designed to
 - esbuild (API)  
 - Vite (frontend)  
 - Docker + docker-compose  
+
+```mermaid
+flowchart TD
+
+    A[Frontend Dashboard<br/>React + Vite] 
+        --> B[API Server<br/>Express 5 + Node 24]
+
+    B --> C[Write Intent Queue<br/>PostgreSQL + Drizzle ORM]
+
+    C --> D[Safe Flush Engine<br/>Atomic Write Orchestration]
+
+    D --> E[SMB Network Share<br/>Shared File System]
+
+    style A fill:#4c8bf5,stroke:#1b4db3,stroke-width:1px,color:#fff
+    style B fill:#6c5ce7,stroke:#3d2db3,stroke-width:1px,color:#fff
+    style C fill:#00b894,stroke:#006f52,stroke-width:1px,color:#fff
+    style D fill:#fdcb6e,stroke:#b88700,stroke-width:1px,color:#000
+    style E fill:#d63031,stroke:#8b1e1e,stroke-width:1px,color:#fff
+```
