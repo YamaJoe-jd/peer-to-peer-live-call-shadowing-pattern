@@ -1,31 +1,36 @@
-# peer-to-peer-live-call-shadowing-pattern for UCaaS environments
+# Network File Guard
 
+Network File Guard is a full‑stack monitoring and management agent designed to protect files on SMB network shares from concurrent write conflicts. When multiple users or processes attempt to update the same file, Network File Guard intelligently queues write operations and flushes them in a single, safe burst once the file becomes free — preventing data corruption, lock collisions, and partial writes.
 
-This repository contains a short whitepaper documenting a **validated peer-to-peer live call shadowing pattern** for UCaaS contact centers.
+## ✨ Key Features
+- **Concurrency‑safe write orchestration** for SMB network shares  
+- **Real‑time monitoring** of file access and lock state  
+- **Write‑intent queueing** with deterministic flush behavior  
+- **Full‑stack TypeScript monorepo**  
+- **Structured logging** for auditability and debugging  
+- **Modern frontend dashboard** for system visibility  
 
-The pattern addresses a long-standing training gap in modern UCaaS environments: enabling trainees to observe live customer interactions in real time without granting supervisory authority, modifying platform code, or relying on legacy hardware-based approaches.
+## 🧩 Tech Stack
 
-Originally implemented and validated in a HIPAA-regulated healthcare contact center, the pattern demonstrates how existing UCaaS primitives can be repurposed to support effective peer training while preserving least-privilege and operational boundaries.
+### Frontend
+- React + Vite  
+- Tailwind CSS  
+- Radix UI (shadcn/ui)  
+- Wouter  
+- TanStack Query (React Query)  
+- Orval‑generated OpenAPI hooks  
 
-## Contents
+### Backend
+- Node.js 24  
+- Express 5  
+- PostgreSQL  
+- Drizzle ORM  
+- Zod (shared schemas)  
+- Pino logging  
 
-- **Peer-to-Peer_Live_Call_Shadowing_Pattern_for_UCaaS.pdf**  
-  The full whitepaper describing the problem, core insight, pattern mechanics, and applicability.
-
-## Scope and Intent
-
-This document is intended as:
-- A training and architecture reference
-- A practical pattern for practitioners designing UCaaS-based contact center workflows
-- A professional thinking artifact, not a product or vendor integration
-
-It is **not** a how-to guide, implementation script, or endorsement of any specific UCaaS platform.
-
-## Status
-
-- Version: v1.0  
-- Validation context: Healthcare contact center deployment  
-- Date: February 2026
-
-[Peer_to_Peer Live Call Shadowing Pattern for UCaaS.pdf](https://github.com/user-attachments/files/25224941/Peer_to_Peer.Live.Call.Shadowing.Pattern.for.UCaaS.pdf)
----
+### Tooling & Architecture
+- pnpm workspaces  
+- TypeScript project references  
+- esbuild (API)  
+- Vite (frontend)  
+- Docker + docker-compose  
